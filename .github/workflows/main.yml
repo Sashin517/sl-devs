@@ -29,4 +29,4 @@ jobs:
           # ADD THIS LINE 👇
           REMOTE_PORT: 2222
           # Rsync arguments (archive, verbose, compress, delete files not in source)
-          ARGS: "-avz --delete"
+          ARGS: "-avz --delete -o StrictHostKeyChecking=no"
