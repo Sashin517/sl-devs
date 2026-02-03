@@ -1,6 +1,6 @@
-<!-- <p align="center">
+<p align="center">
   <img src="#" alt="The SubZone logo" width="450"/>
-</p> -->
+</p>
 
 # 🎬 Welcome to The SubZone – Your Ultimate Subtitle Destination
 
