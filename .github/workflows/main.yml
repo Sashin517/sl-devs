@@ -21,6 +21,6 @@ jobs:
           REMOTE_USER: ${{ secrets.SSH_USERNAME }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           SOURCE: "./"
-          REMOTE_PORT: 21098
+          REMOTE_PORT: 22
           # 👇 Change this back to just these flags
           ARGS: "-avz --delete"
