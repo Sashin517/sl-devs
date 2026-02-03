@@ -6,7 +6,7 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy to sedna.lambdasoul.x10.mx
+    name: Deploy to sldevs.web.lk
     runs-on: ubuntu-latest
 
     steps:
