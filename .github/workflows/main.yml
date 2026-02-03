@@ -1,3 +1,30 @@
+# name: Deploy website on push
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   web-deploy:
+#     name: Deploy to sldevs.web.lk
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Get latest code
+#         uses: actions/checkout@v4
+
+#       - name: Sync files via SSH (Rsync)
+#         uses: easingthemes/ssh-deploy@v5.1.0
+#         with:
+#           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+#           REMOTE_HOST: ${{ secrets.SSH_HOST }}
+#           REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+#           TARGET: ${{ secrets.REMOTE_TARGET }}
+#           SOURCE: "./"
+#           REMOTE_PORT: 22
+#           # 👇 Change this back to just these flags
+#           ARGS: "-avz --delete"
+
 name: Deploy website on push
 on:
   push:
@@ -6,21 +33,21 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy to sldevs.web.lk
+    name: Deploy via FTPS
     runs-on: ubuntu-latest
-
     steps:
       - name: Get latest code
         uses: actions/checkout@v4
 
-      - name: Sync files via SSH (Rsync)
-        uses: easingthemes/ssh-deploy@v5.1.0
+      - name: Sync files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
-          SOURCE: "./"
-          REMOTE_PORT: 22
-          # 👇 Change this back to just these flags
-          ARGS: "-avz --delete"
+          server: ${{ secrets.FTP_HOST }}     # Your domain/IP is fine here
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }} # You need to create this Secret!
+          protocol: ftps
+          security: strict
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
