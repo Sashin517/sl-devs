@@ -25,7 +25,7 @@ jobs:
           set ssl:verify-certificate no;
           set ftp:ssl-force true;
           open -u \"$FTP_USER\",\"$FTP_PASSWORD\" \"$FTP_HOST\";
-          mirror -R ./ ./sldevssd -v --ignore-time --parallel=5 \
+          mirror -R ./ ./ -v --ignore-time --parallel=5 \
             --exclude-glob .git/ \
             --exclude-glob .github/ \
             --exclude-glob README.md;
