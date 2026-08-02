@@ -337,6 +337,159 @@
   .dial-container { bottom: -125px; width: 200px; height: 200px; }
 }
 
+/* --- Projects & Tech Stack Section --- */
+.projects-section {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Background Abstract Waves */
+.projects-neon-wave {
+  position: absolute;
+  top: -100px;
+  right: 0;
+  width: 100%;
+  height: 120%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.projects-neon-path {
+  filter: drop-shadow(0 0 15px var(--neon-color));
+}
+
+/* Project Pagination & Header */
+.project-counter-text {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+}
+
+.pagination-track {
+  height: 1px;
+  background-color: #333;
+}
+
+.pagination-pill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 8px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: transparent;
+  transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-control {
+  background: transparent;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.btn-control:hover {
+  border-color: var(--neon-color);
+  color: var(--neon-color);
+}
+
+/* Project Card */
+.border-custom { border: 1px solid #333; }
+.border-end-custom-md { border-right: 1px solid #333; }
+.border-top-custom { border-top: 1px solid #333; }
+.min-h-400 { min-height: 400px; }
+
+.project-mockup {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.neon-text { color: var(--neon-color); }
+.project-desc {
+  font-size: 0.8rem;
+  color: #aaa;
+  line-height: 1.6;
+}
+.project-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #fff;
+  align-self: flex-start;
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.project-link:hover {
+  color: var(--neon-color);
+  border-color: var(--neon-color);
+}
+
+/* Trusted By */
+.trusted-text {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.trusted-logo-box {
+  border: 1px solid #333;
+  padding: 15px 40px;
+  background-color: #111;
+  border-radius: 4px;
+}
+
+/* Tech Stack Bento Grid */
+.tech-stack-title {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 120px;
+  gap: 1px; /* Creates the strict inner grid lines */
+  background-color: #333; /* Color of the grid lines */
+  border: 1px solid #333; /* Outer border */
+}
+
+.bento-item {
+  background-color: var(--bg-color); /* Hides background to expose gap lines */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  transition: color 0.3s ease;
+}
+.bento-item:hover { color: #fff; }
+.tech-logo i { font-size: 2rem; }
+.tech-logo small { font-size: 0.75rem; letter-spacing: 1px; }
+
+/* Bento specific placements */
+.item-mongo { grid-column: 1; grid-row: 1; }
+.item-laravel { grid-column: 1; grid-row: 2 / 4; } /* Spans 2 rows */
+.item-mysql { grid-column: 2; grid-row: 1; }
+.item-aws { grid-column: 2; grid-row: 2; }
+.item-next { grid-column: 2; grid-row: 3; }
+.item-php { grid-column: 3; grid-row: 1 / 3; } /* Spans 2 rows */
+.item-react { grid-column: 3; grid-row: 3; }
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .border-end-custom-md { border-right: none; border-bottom: 1px solid #333; }
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 100px;
+  }
+  .item-php { grid-column: 2; grid-row: 2 / 4; }
+  .item-react { grid-column: 1; grid-row: 4; }
+  .item-next { grid-column: 2; grid-row: 4; }
+}
+
     /* Responsive adjustments for mobile */
     @media (max-width: 991px) {
       .profile-grid {
@@ -520,6 +673,95 @@
   </div>
 </section>
 
+<!-- Projects & Tech Stack Section -->
+<section id="projects" class="projects-section position-relative pb-5">
+  
+  <!-- Background Neon Wave (Abstract) -->
+  <svg class="projects-neon-wave" viewBox="0 0 1000 800" preserveAspectRatio="none">
+    <path class="projects-neon-path" d="M 1000 0 Q 700 300 1000 500 Q 300 500 0 700" fill="none" stroke="var(--neon-color)" stroke-width="4"></path>
+  </svg>
+
+  <div class="container position-relative z-3">
+    
+    <!-- 1. Projects Carousel -->
+    <div class="project-carousel-wrapper pt-5 mb-5">
+      
+      <!-- Header & Custom Pagination -->
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h2 id="project-counter" class="project-counter-text mb-0">Projects 1/5</h2>
+        
+        <div class="custom-pagination-container d-flex align-items-center flex-grow-1 mx-4">
+          <div class="pagination-track w-100 position-relative">
+            <div id="pagination-pill" class="pagination-pill"></div>
+          </div>
+        </div>
+
+        <div class="project-controls d-flex gap-2">
+          <button id="prev-project" class="btn-control"><i class="bi bi-arrow-left"></i></button>
+          <button id="next-project" class="btn-control"><i class="bi bi-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Project Card -->
+      <div class="project-card border-custom">
+        <div class="row g-0">
+          <div class="col-md-6 border-end-custom-md p-4 d-flex align-items-center justify-content-center min-h-400">
+            <!-- Placeholder for Project Image -->
+            <img id="project-img" src="project-mockup-1.png" alt="Project Mockup" class="img-fluid project-mockup">
+          </div>
+          <div class="col-md-6 p-5 d-flex flex-column justify-content-center min-h-400">
+            <h3 id="project-title" class="project-title neon-text mb-3">SAPSRI</h3>
+            <p id="project-desc" class="project-desc">Final-Year Software Engineering Student with specializations in Full-Stack Web Development, Backend Design, and Generative AI. Hands-on experience in building efficient software applications with Golang, Python, and React.js. Enthusiastic about algorithmic challenges and Open Source contributions, aiming to apply Agile methodologies and Continuous Integration/Continuous Deployment principles during a Software Engineering Internship.</p>
+            <a id="project-link" href="#" class="project-link mt-3">Demo <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Trusted By Section -->
+    <div class="trusted-by-section d-flex flex-wrap align-items-center mb-5 pt-4">
+      <h3 class="trusted-text me-4 mb-0">Trusted by</h3>
+      <div class="trusted-logo-box">
+        <!-- Replace with actual SAPSRI logo -->
+        <span class="text-muted fw-bold"><i class="bi bi-hurricane"></i> SAPSRI</span>
+      </div>
+    </div>
+
+    <!-- 3. Tech Stack Bento Grid -->
+    <div class="tech-stack-section pt-5">
+      <div class="d-flex justify-content-end align-items-center mb-4">
+        <div class="flex-grow-1 border-top-custom me-3"></div>
+        <h2 class="tech-stack-title mb-0">Tech Stack</h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item item-mongo">
+          <div class="tech-logo text-center"><i class="bi bi-leaf"></i><br><small>mongoDB</small></div>
+        </div>
+        <div class="bento-item item-mysql">
+          <div class="tech-logo text-center"><i class="bi bi-database"></i><br><small>MySQL</small></div>
+        </div>
+        <div class="bento-item item-php">
+          <div class="tech-logo text-center"><i class="bi bi-filetype-php fs-1"></i></div>
+        </div>
+        <div class="bento-item item-laravel">
+          <div class="tech-logo text-center"><i class="bi bi-box"></i><br><small>Laravel</small></div>
+        </div>
+        <div class="bento-item item-aws">
+          <div class="tech-logo text-center"><i class="bi bi-cloud-check"></i><br><small>aws</small></div>
+        </div>
+        <div class="bento-item item-next">
+          <div class="tech-logo text-center fw-bold">NEXT.js</div>
+        </div>
+        <div class="bento-item item-react">
+          <div class="tech-logo text-center"><i class="bi bi-symmetry-vertical"></i><br><small>React</small></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -607,6 +849,81 @@
       dialIndicator.style.transform = `rotate(${stepsData[index].rotation}deg)`;
     }
   });
+
+  // --- Projects Carousel Logic ---
+const projectsData = [
+  {
+    title: "SAPSRI",
+    desc: "Final-Year Software Engineering Student with specializations in Full-Stack Web Development, Backend Design, and Generative AI. Hands-on experience in building efficient software applications with Golang, Python, and React.js. Enthusiastic about algorithmic challenges and Open Source contributions...",
+    link: "#",
+    img: "project-mockup-1.png"
+  },
+  {
+    title: "EcoChange",
+    desc: "A smart e-waste management system utilizing a Flutter mobile application and real-time tracking to ensure sustainable disposal processes.",
+    link: "#",
+    img: "project-mockup-2.png"
+  },
+  {
+    title: "LankaLawBot",
+    desc: "Generative AI assistant using RAG technology for semantic search of Sri Lankan laws. Integrates specific LLM architecture for accurate legal document retrieval.",
+    link: "#",
+    img: "project-mockup-3.png"
+  },
+  {
+    title: "GlobalBooks Inc.",
+    desc: "Migration of a monolithic e-commerce system to a distributed SOA architecture. Implemented BPEL and RabbitMQ for seamless data flow and process management.",
+    link: "#",
+    img: "project-mockup-4.png"
+  },
+  {
+    title: "Sovereign Watches",
+    desc: "Custom e-commerce platform designed for retail flipping of premium watches, featuring an automated inventory system and direct WhatsApp integration.",
+    link: "#",
+    img: "project-mockup-5.png"
+  }
+];
+
+let currentProjIndex = 0;
+const totalProjects = projectsData.length;
+
+const projCounter = document.getElementById('project-counter');
+const projPill = document.getElementById('pagination-pill');
+const projTitle = document.getElementById('project-title');
+const projDesc = document.getElementById('project-desc');
+const projImg = document.getElementById('project-img');
+const projLink = document.getElementById('project-link');
+
+const btnPrev = document.getElementById('prev-project');
+const btnNext = document.getElementById('next-project');
+
+function updateProjectUI(index) {
+  // 1. Update text content
+  projCounter.textContent = `Projects ${index + 1}/${totalProjects}`;
+  projTitle.textContent = projectsData[index].title;
+  projDesc.textContent = projectsData[index].desc;
+  projLink.href = projectsData[index].link;
+  projImg.src = projectsData[index].img;
+
+  // 2. Calculate and move pill position
+  // Subtracting the pill's own width ratio ensures it stays within the line bounds
+  const percentage = (index / (totalProjects - 1)) * 100;
+  projPill.style.left = `calc(${percentage}% - (${percentage} * 60px / 100))`;
+}
+
+btnNext.addEventListener('click', () => {
+  currentProjIndex = (currentProjIndex + 1) % totalProjects;
+  updateProjectUI(currentProjIndex);
+});
+
+btnPrev.addEventListener('click', () => {
+  currentProjIndex = (currentProjIndex - 1 + totalProjects) % totalProjects;
+  updateProjectUI(currentProjIndex);
+});
+
+// Initialize on load
+updateProjectUI(0);
 </script>
+
 </body>
 </html>
