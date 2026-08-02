@@ -24,5 +24,5 @@ jobs:
           lftp -c "
           set ssl:verify-certificate no
           open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST
-          mirror -R ./ ./ --ignore-time --parallel=10 --exclude-glob .git/ --exclude-glob .github/
+          mirror -R ./ ./ -v --ignore-time --parallel=10 --exclude-glob .git/ --exclude-glob .github/
           "
