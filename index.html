@@ -539,6 +539,181 @@
   color: #000;
 }
 
+/* --- Testimonials Section --- */
+.testimonials-section {
+  background-color: var(--bg-color);
+  overflow: hidden;
+}
+
+.testimonial-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 500;
+}
+
+.testimonial-scroll-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 2rem;
+  /* Hide scrollbar for clean look */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.testimonial-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  flex: 0 0 auto;
+  width: 350px;
+  background-color: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 2rem;
+  scroll-snap-align: start;
+}
+
+.client-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.client-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.client-company {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.client-stars {
+  color: var(--neon-color);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.client-review {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+  background-color: var(--bg-color);
+  min-height: 800px;
+}
+
+.contact-neon-graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.contact-neon-graphic path {
+  filter: drop-shadow(0 0 15px var(--neon-color));
+}
+
+.contact-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.contact-form-box {
+  background-color: rgba(15, 15, 15, 0.85); /* Slight transparency to show neon behind */
+  border: 1px solid #222;
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.custom-input {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 12px 15px;
+}
+.custom-input:focus {
+  background-color: #222;
+  border-color: var(--neon-color);
+  color: #fff;
+  box-shadow: none;
+}
+.custom-input::placeholder { color: #666; }
+
+.custom-select {
+  color: #666;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.btn-request {
+  background-color: var(--neon-color);
+  color: #000;
+  padding: 14px;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.btn-request:hover {
+  background-color: #b3d600;
+  color: #000;
+}
+
+/* --- Footer --- */
+.site-footer {
+  background-color: #050505;
+  overflow: hidden;
+}
+
+.footer-glow {
+  position: absolute;
+  bottom: -200px;
+  right: -100px;
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(212, 255, 0, 0.15) 0%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer-desc {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.6;
+}
+
+.footer-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.footer-nav a:hover {
+  color: var(--neon-color);
+}
+
+.copyright-text {
+  font-size: 0.85rem;
+  color: #666;
+}
+
 @media (max-width: 767px) {
   .subscribe-form {
     max-width: 100%;
@@ -858,6 +1033,202 @@
 
   </div>
 </section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5">
+  <div class="container-fluid px-0">
+    <h2 class="text-center mb-5 testimonial-title">What Our Client Say</h2>
+    
+    <!-- Horizontal Scroll Wrapper -->
+    <div class="testimonial-scroll-container px-4">
+      
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <img src="client-avatar.png" alt="Kristin Watson" class="client-avatar me-3">
+          <div>
+            <h4 class="client-name mb-0">Kristin Watson</h4>
+            <span class="client-company">JK Simons</span>
+          </div>
+        </div>
+        <div class="client-stars mb-3">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="client-review">"More than just software developers, SL Devs acts as a true strategic partner. They took the time to understand our complex business workflows before writing a single line of code. The custom ERP system they built eliminated our data silos and has saved our administrative team thousands of hours this year."</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <img src="client-avatar.png" alt="Kristin Watson" class="client-avatar me-3">
+          <div>
+            <h4 class="client-name mb-0">Kristin Watson</h4>
+            <span class="client-company">JK Simons</span>
+          </div>
+        </div>
+        <div class="client-stars mb-3">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="client-review">"More than just software developers, SL Devs acts as a true strategic partner. They took the time to understand our complex business workflows before writing a single line of code. The custom ERP system they built eliminated our data silos and has saved our administrative team thousands of hours this year."</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <img src="client-avatar.png" alt="Kristin Watson" class="client-avatar me-3">
+          <div>
+            <h4 class="client-name mb-0">Kristin Watson</h4>
+            <span class="client-company">JK Simons</span>
+          </div>
+        </div>
+        <div class="client-stars mb-3">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="client-review">"More than just software developers, SL Devs acts as a true strategic partner. They took the time to understand our complex business workflows before writing a single line of code. The custom ERP system they built eliminated our data silos and has saved our administrative team thousands of hours this year."</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <img src="client-avatar.png" alt="Kristin Watson" class="client-avatar me-3">
+          <div>
+            <h4 class="client-name mb-0">Kristin Watson</h4>
+            <span class="client-company">JK Simons</span>
+          </div>
+        </div>
+        <div class="client-stars mb-3">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="client-review">"More than just software developers, SL Devs acts as a true strategic partner. They took the time to understand our complex business workflows before writing a single line of code. The custom ERP system they built eliminated our data silos and has saved our administrative team thousands of hours this year."</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section position-relative py-5">
+  
+  <!-- Diagonal Neon Graphic -->
+  <svg class="contact-neon-graphic" viewBox="0 0 1000 800" preserveAspectRatio="none">
+    <path d="M 0 300 L 500 500 L 1000 -100" fill="none" stroke="var(--neon-color)" stroke-width="4"></path>
+    <path d="M 0 900 L 600 600 L 1000 900" fill="none" stroke="var(--neon-color)" stroke-width="2" opacity="0.3"></path>
+  </svg>
+
+  <div class="container position-relative z-3 my-5">
+    <div class="row align-items-center">
+      
+      <!-- Left Column: Title -->
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <h2 class="contact-title mb-3">Ready to Transform<br>Your Business</h2>
+        <p class="contact-subtitle">Contact with Our Experts to Know More</p>
+      </div>
+
+      <!-- Right Column: Form Box -->
+      <div class="col-lg-5 offset-lg-1">
+        <div class="contact-form-box p-4">
+          <form>
+            <div class="row g-3 mb-3">
+              <div class="col-sm-6">
+                <input type="text" class="form-control custom-input" placeholder="Name" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="email" class="form-control custom-input" placeholder="Work Email Address" required>
+              </div>
+            </div>
+            
+            <div class="row g-3 mb-3">
+              <div class="col-sm-6">
+                <input type="tel" class="form-control custom-input" placeholder="Phone Number">
+              </div>
+              <div class="col-sm-6">
+                <input type="text" class="form-control custom-input" placeholder="Company Name">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <select class="form-select custom-input custom-select">
+                <option selected disabled>Service of Interest</option>
+                <option value="web">Web Application Development</option>
+                <option value="api">API Development & Integration</option>
+                <option value="ui">UI/UX Design</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <textarea class="form-control custom-input" rows="4" placeholder="Tell us about your project requirements" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-request w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
+              Request a Demo <i class="bi bi-send-fill" style="font-size: 0.8rem;"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer position-relative pt-5 pb-3 border-top-custom">
+  <!-- Bottom Radial Glow -->
+  <div class="footer-glow"></div>
+  
+  <div class="container position-relative z-3">
+    
+    <!-- Top Row -->
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4">
+        <img src="logo.png" alt="SL Devs" class="footer-logo mb-4" height="50">
+        <p class="footer-desc">We engineer fast, scalable web applications. We combine clean UI design with secure backend architecture to build reliable digital products.</p>
+        
+        <div class="footer-nav d-flex gap-4 mt-4">
+          <a href="#proposition">Proposition</a>
+          <a href="#how-we-work">How We Work</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider Line -->
+    <div class="border-bottom-custom w-100 mb-4"></div>
+
+    <!-- Bottom Row -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <p class="copyright-text mb-3 mb-md-0">Copyright © 2026 SL Devs. All rights reserved.</p>
+      
+      <div class="social-links m-0">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-tiktok"></i></a>
+      </div>
+    </div>
+    
+  </div>
+</footer>
+
+</body>
+</html>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
