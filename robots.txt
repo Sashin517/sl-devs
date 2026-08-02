@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /power-watch/
+Disallow: /sapsri/
+Disallow: /sapsri-admin/
+Disallow: /wp/
+Disallow: /media/
+Disallow: /cgi-bin/
 
 Sitemap: https://sldevs.web.lk/sitemap.xml
