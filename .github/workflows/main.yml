@@ -12,6 +12,9 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
       - name: Upload files via lftp
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
