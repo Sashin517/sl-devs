@@ -478,6 +478,77 @@
 .item-php { grid-column: 3; grid-row: 1 / 3; } /* Spans 2 rows */
 .item-react { grid-column: 3; grid-row: 3; }
 
+/* --- Subscribe Section --- */
+.subscribe-section {
+  background-color: var(--bg-color);
+}
+
+/* Background glow to match the image */
+.subscribe-container {
+  background: radial-gradient(circle at 0% 100%, rgba(212, 255, 0, 0.15) 0%, rgba(0, 0, 0, 0) 50%);
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.subscribe-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.subscribe-form {
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Dark Input Field */
+.subscribe-input {
+  background-color: #1a1a1a;
+  border: 1px solid #222;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.subscribe-input:focus {
+  background-color: #222;
+  border-color: #444;
+  color: #fff;
+  box-shadow: none;
+}
+
+.subscribe-input::placeholder {
+  color: #888;
+}
+
+/* Yellow Subscribe Button */
+.btn-subscribe {
+  background-color: var(--neon-color);
+  color: #000;
+  border: none;
+  border-radius: 8px; /* Slightly squarer than hero buttons */
+  padding: 12px 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-subscribe:hover {
+  background-color: #b3d600; /* Slightly darker yellow on hover */
+  color: #000;
+}
+
+@media (max-width: 767px) {
+  .subscribe-form {
+    max-width: 100%;
+    flex-direction: column;
+  }
+  .btn-subscribe {
+    width: 100%;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 767px) {
   .border-end-custom-md { border-right: none; border-bottom: 1px solid #333; }
@@ -756,6 +827,32 @@
         <div class="bento-item item-react">
           <div class="tech-logo text-center"><i class="bi bi-symmetry-vertical"></i><br><small>React</small></div>
         </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Subscribe Section -->
+<section class="subscribe-section position-relative pt-5 pb-5">
+  <div class="container position-relative z-3">
+    
+    <div class="subscribe-container p-4 p-md-5">
+      <div class="row align-items-center">
+        
+        <!-- Left: Text -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h2 class="subscribe-title mb-0">Subscribe to<br>Newsletter</h2>
+        </div>
+        
+        <!-- Right: Input and Button -->
+        <div class="col-md-6">
+          <form class="subscribe-form d-flex gap-3 justify-content-md-end">
+            <input type="email" class="form-control subscribe-input" placeholder="type email" required>
+            <button type="submit" class="btn btn-subscribe fw-bold">Subscribe</button>
+          </form>
+        </div>
+        
       </div>
     </div>
 
