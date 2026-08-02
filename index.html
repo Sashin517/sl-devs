@@ -58,7 +58,13 @@
       margin-top: -80px; /* Pull up to sit behind transparent nav */
     }
 
-    /* Neon Wave Background */
+    /* Neon Wave Background & Progressive Blur */
+    .progressive-blur {
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+      pointer-events: none;
+    }
+
     .neon-wave {
       position: absolute;
       top: 50%;
@@ -74,8 +80,9 @@
     .neon-path {
       fill: none;
       stroke: var(--neon-color);
-      stroke-width: 8;
-      filter: drop-shadow(0 0 25px var(--neon-color)) drop-shadow(0 0 50px var(--neon-color));
+      stroke-width: 25; /* Thickened to 25px */
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 15px var(--neon-color)) drop-shadow(0 0 40px rgba(212, 255, 0, 0.4));
     }
 
     /* Developer Images */
@@ -306,18 +313,18 @@
   max-width: 600px;
 }
 
-/* Rotating Dial Styling */
+/* Rotating Dial Styling (Top 180) */
 .dial-container {
   position: absolute;
-  bottom: -100px; /* Hides the bottom half off-screen */
+  bottom: -40px; 
   left: 50%;
   transform: translateX(-50%);
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 150px; 
 }
 
 .dial-indicator {
-  transform-origin: 100px 100px; /* Center of the SVG viewBox */
+  transform-origin: 150px 140px; /* Center point of the SVG arc */
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -334,7 +341,7 @@
 @media (max-width: 767px) {
   .steps-main-title { margin-top: 80px; margin-bottom: 1.5rem; }
   .steps-nav::before { display: none; }
-  .dial-container { bottom: -125px; width: 200px; height: 200px; }
+  .dial-container { bottom: -30px; width: 200px; height: 100px; transform: translateX(-50%) scale(0.8); }
 }
 
 /* --- Projects & Tech Stack Section --- */
@@ -620,9 +627,6 @@
   opacity: 0.6;
   pointer-events: none;
 }
-.contact-neon-graphic path {
-  filter: drop-shadow(0 0 15px var(--neon-color));
-}
 
 .contact-title {
   font-size: clamp(3rem, 5vw, 4.5rem);
@@ -796,8 +800,8 @@
 
   <!-- Hero Section -->
   <header class="hero-section">
-    <!-- Glowing SVG Background Wave -->
-    <svg class="neon-wave" viewBox="0 0 1000 600" preserveAspectRatio="none">
+    <!-- Glowing SVG Background Wave - Added progressive blur -->
+    <svg class="neon-wave progressive-blur" viewBox="0 0 1000 600" preserveAspectRatio="none">
       <path class="neon-path" d="M 0 500 C 300 500, 400 100, 700 300 S 1000 0, 1000 0"></path>
     </svg>
 
@@ -847,10 +851,10 @@
         </div>
       </div>
 
-      <!-- Bottom Left: Neon Graphic (Spans 2 rows) -->
+      <!-- Bottom Left: Neon Graphic (Spans 2 rows) - Added progressive blur -->
       <div class="grid-cell border-right row-span-2 position-relative overflow-hidden">
         <!-- Reusing the neon SVG for the decorative background -->
-        <svg class="neon-wave-small" viewBox="0 0 500 500" preserveAspectRatio="none">
+        <svg class="neon-wave-small progressive-blur" viewBox="0 0 500 500" preserveAspectRatio="none">
           <path class="neon-path" d="M -100 250 C 100 0, 400 500, 600 250"></path>
         </svg>
       </div>
@@ -900,18 +904,19 @@
         </div>
       </div>
 
-      <!-- Bottom Center: Rotating Dial Graphic -->
+      <!-- Bottom Center: Rotating Dial Graphic - Top Half 180 Degrees -->
       <div class="dial-container">
-        <svg class="step-dial" viewBox="0 0 200 200">
-          <!-- Outer grey circles -->
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#333" stroke-width="1"/>
-          <circle cx="100" cy="100" r="60" fill="none" stroke="#333" stroke-width="1"/>
-          <!-- Rotating yellow segment -->
+        <svg class="step-dial" viewBox="0 0 300 150">
+          <!-- Background Tracks -->
+          <path d="M 20 140 A 130 130 0 0 1 280 140" fill="none" stroke="#222" stroke-width="2"/>
+          <path d="M 60 140 A 90 90 0 0 1 240 140" fill="none" stroke="#222" stroke-width="2"/>
+          
+          <!-- Rotating 45-Degree Wedge Indicator -->
           <g id="dial-indicator" class="dial-indicator">
-            <path d="M 100 10 A 90 90 0 0 0 10 100 L 40 100 A 60 60 0 0 1 100 40 Z" fill="var(--neon-color)"/>
+            <path d="M 150 140 L 20 140 A 130 130 0 0 1 58.08 48.08 L 86.36 76.36 A 90 90 0 0 0 60 140 Z" fill="var(--neon-color)"/>
           </g>
-          <!-- Center solid circle -->
-          <circle cx="100" cy="100" r="30" fill="var(--neon-color)"/>
+          
+          <circle cx="150" cy="140" r="40" fill="var(--neon-color)"/>
         </svg>
       </div>
 
@@ -922,9 +927,9 @@
 <!-- Projects & Tech Stack Section -->
 <section id="projects" class="projects-section position-relative pb-5">
   
-  <!-- Background Neon Wave (Abstract) -->
-  <svg class="projects-neon-wave" viewBox="0 0 1000 800" preserveAspectRatio="none">
-    <path class="projects-neon-path" d="M 1000 0 Q 700 300 1000 500 Q 300 500 0 700" fill="none" stroke="var(--neon-color)" stroke-width="4"></path>
+  <!-- Background Neon Wave (Abstract) - Added progressive blur and neon path class-->
+  <svg class="projects-neon-wave progressive-blur" viewBox="0 0 1000 800" preserveAspectRatio="none">
+    <path class="neon-path" d="M 1000 0 Q 700 300 1000 500 Q 300 500 0 700"></path>
   </svg>
 
   <div class="container position-relative z-3">
@@ -1039,8 +1044,8 @@
   <div class="container-fluid px-0">
     <h2 class="text-center mb-5 testimonial-title">What Our Client Say</h2>
     
-    <!-- Horizontal Scroll Wrapper -->
-    <div class="testimonial-scroll-container px-4">
+    <!-- Horizontal Scroll Wrapper (Added ID for JS Auto Scroll) -->
+    <div id="testimonial-slider" class="testimonial-scroll-container px-4">
       
       <!-- Card 1 -->
       <div class="testimonial-card">
@@ -1125,10 +1130,10 @@
 <!-- Contact Section -->
 <section id="contact" class="contact-section position-relative py-5">
   
-  <!-- Diagonal Neon Graphic -->
-  <svg class="contact-neon-graphic" viewBox="0 0 1000 800" preserveAspectRatio="none">
-    <path d="M 0 300 L 500 500 L 1000 -100" fill="none" stroke="var(--neon-color)" stroke-width="4"></path>
-    <path d="M 0 900 L 600 600 L 1000 900" fill="none" stroke="var(--neon-color)" stroke-width="2" opacity="0.3"></path>
+  <!-- Curvy Neon Graphic - Added progressive blur and changed L commands to Bezier Curves (C) -->
+  <svg class="contact-neon-graphic progressive-blur" viewBox="0 0 1000 800" preserveAspectRatio="none">
+    <path class="neon-path" d="M -100 200 C 300 600, 700 400, 1100 -100"></path>
+    <path class="neon-path" d="M -100 900 C 400 600, 800 600, 1100 900" style="opacity: 0.3;"></path>
   </svg>
 
   <div class="container position-relative z-3 my-5">
@@ -1194,7 +1199,7 @@
   <div class="container position-relative z-3">
     
     <!-- Top Row -->
-    <div class="row mb-5">
+    <div class="row mb-4">
       <div class="col-md-6 col-lg-4">
         <img src="logo.png" alt="SL Devs" class="footer-logo mb-4" height="50">
         <p class="footer-desc">We engineer fast, scalable web applications. We combine clean UI design with secure backend architecture to build reliable digital products.</p>
@@ -1209,7 +1214,7 @@
     </div>
 
     <!-- Divider Line -->
-    <div class="border-bottom-custom w-100 mb-4"></div>
+    <hr class="w-100 mb-4 mt-2" style="border-color: #333; opacity: 1;">
 
     <!-- Bottom Row -->
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
@@ -1241,7 +1246,7 @@
     const stepDesc = document.getElementById('step-desc');
     const dialIndicator = document.getElementById('dial-indicator');
 
-    // Data for the 4 steps
+    // Data for the 4 steps (Rotation changed to 0, 45, 90, 135 for top 180 degrees)
     const stepsData = [
       {
         title: "1. Discover",
@@ -1251,17 +1256,17 @@
       {
         title: "2. Visual Prototyping",
         desc: "You approve the exact look before development starts. We design high-fidelity UI mockups using Figma, mapping out every user interaction and component layout.",
-        rotation: 90
+        rotation: 45
       },
       {
         title: "3. Agile Build",
         desc: "We write clean, scalable code and provide weekly progress updates. Our stack utilizes modern frameworks like React and robust backend architectures to ensure optimal performance.",
-        rotation: 180
+        rotation: 90
       },
       {
         title: "4. Zero-Bug Launch",
         desc: "We ensure a perfect live state and provide training. Rigorous testing across devices and browsers guarantees a smooth deployment and reliable user experience.",
-        rotation: 270
+        rotation: 135
       }
     ];
 
@@ -1391,6 +1396,30 @@ btnPrev.addEventListener('click', () => {
 
 // Initialize on load
 updateProjectUI(0);
+
+// --- Testimonials Auto Scroll Logic ---
+const testSlider = document.getElementById('testimonial-slider');
+if (testSlider) {
+  let autoScrollInterval = setInterval(() => {
+    if (testSlider.scrollLeft + testSlider.clientWidth >= testSlider.scrollWidth - 20) {
+      testSlider.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      testSlider.scrollBy({ left: 374, behavior: 'smooth' }); // ~350px width + 24px gap
+    }
+  }, 3500);
+
+  // Pause on hover
+  testSlider.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+  testSlider.addEventListener('mouseleave', () => {
+    autoScrollInterval = setInterval(() => {
+      if (testSlider.scrollLeft + testSlider.clientWidth >= testSlider.scrollWidth - 20) {
+        testSlider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        testSlider.scrollBy({ left: 374, behavior: 'smooth' });
+      }
+    }, 3500);
+  });
+}
 </script>
 
 </body>
