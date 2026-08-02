@@ -28,5 +28,7 @@ jobs:
           mirror -R ./ ./ -v --ignore-time --parallel=5 \
             --exclude-glob .git/ \
             --exclude-glob .github/ \
-            --exclude-glob README.md
+            --exclude-glob README.md;
+          put -O ./ index.html;
+          bye
           "
