@@ -526,6 +526,57 @@
 .item-php { grid-column: 3; grid-row: 1 / 3; } /* Spans 2 rows */
 .item-react { grid-column: 3; grid-row: 3; }
 
+/* Tech Stack CDN Icon Styling */
+.tech-icon {
+  height: 45px;
+  margin-bottom: 5px;
+  filter: grayscale(100%) brightness(1.2) opacity(0.5);
+  transition: all 0.3s ease;
+}
+
+.tech-icon-wide {
+  height: 45px;
+  filter: grayscale(100%) brightness(1.2) opacity(0.5);
+  transition: all 0.3s ease;
+}
+
+/* Custom wrapper for the AWS white rounded box */
+.aws-logo-wrapper {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.tech-icon-aws {
+  height: 35px;
+  filter: grayscale(100%) contrast(1.2); 
+}
+
+/* Next.js is black text by default via CDN, this inverts it to white */
+.nextjs-invert {
+  filter: invert(1) opacity(0.5);
+}
+
+/* Illuminate effect on hover to bring the logos forward */
+.bento-item:hover .tech-icon,
+.bento-item:hover .tech-icon-wide {
+  filter: grayscale(100%) brightness(2.5) opacity(1);
+}
+
+.bento-item:hover .nextjs-invert {
+  filter: invert(1) opacity(1);
+}
+
+.bento-item:hover .aws-logo-wrapper {
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
 /* --- Subscribe Section --- */
 .subscribe-section {
   background-color: var(--bg-color);
@@ -1052,39 +1103,71 @@
     </div>
 
     <!-- 3. Tech Stack Bento Grid -->
-    <div class="tech-stack-section pt-5">
-      <div class="d-flex justify-content-end align-items-center mb-4">
-        <div class="flex-grow-1 border-top-custom me-3"></div>
-        <h2 class="tech-stack-title mb-0">Tech Stack</h2>
-      </div>
+<!-- 3. Tech Stack Bento Grid -->
+<div class="tech-stack-section pt-5">
+  <div class="d-flex justify-content-end align-items-center mb-4">
+    <div class="flex-grow-1 border-top-custom me-3"></div>
+    <h2 class="tech-stack-title mb-0">Tech Stack</h2>
+  </div>
 
-      <div class="bento-grid">
-        <div class="bento-item item-mongo">
-          <div class="tech-logo text-center"><i class="bi bi-leaf"></i><br><small>mongoDB</small></div>
-        </div>
-        <div class="bento-item item-mysql">
-          <div class="tech-logo text-center"><i class="bi bi-database"></i><br><small>MySQL</small></div>
-        </div>
-        <div class="bento-item item-php">
-          <div class="tech-logo text-center"><i class="bi bi-filetype-php fs-1"></i></div>
-        </div>
-        <div class="bento-item item-laravel">
-          <div class="tech-logo text-center"><i class="bi bi-box"></i><br><small>Laravel</small></div>
-        </div>
-        <div class="bento-item item-aws">
-          <div class="tech-logo text-center"><i class="bi bi-cloud-check"></i><br><small>aws</small></div>
-        </div>
-        <div class="bento-item item-next">
-          <div class="tech-logo text-center fw-bold">NEXT.js</div>
-        </div>
-        <div class="bento-item item-react">
-          <div class="tech-logo text-center"><i class="bi bi-symmetry-vertical"></i><br><small>React</small></div>
+  <div class="bento-grid">
+    <!-- MongoDB -->
+    <div class="bento-item item-mongo">
+      <div class="tech-logo text-center">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="tech-icon" style="height: 55px;"><br>
+        <small>mongoDB</small>
+      </div>
+    </div>
+    
+    <!-- MySQL -->
+    <div class="bento-item item-mysql">
+      <div class="tech-logo text-center">
+        <!-- Increased height to 65px -->
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" class="tech-icon-wide" style="height: 82px;">
+      </div>
+    </div>
+    
+    <!-- PHP -->
+    <div class="bento-item item-php">
+      <div class="tech-logo text-center">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" class="tech-icon-wide" style="height: 76px;">
+      </div>
+    </div>
+    
+    <!-- Laravel -->
+    <div class="bento-item item-laravel">
+      <div class="tech-logo text-center">
+        <!-- Increased height from 60px to 90px -->
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original-wordmark.svg" alt="Laravel" class="tech-icon-wide" style="height: 124px;">
+      </div>
+    </div>
+    
+    <!-- AWS -->
+    <div class="bento-item item-aws">
+      <div class="tech-logo text-center">
+        <div class="aws-logo-wrapper">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="tech-icon-aws" style="height: 45px;">
         </div>
       </div>
     </div>
-
+    
+    <!-- Next.js -->
+    <div class="bento-item item-next">
+      <div class="tech-logo text-center">
+        <!-- Increased height from 35px to 55px -->
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg" alt="Next.js" class="tech-icon-wide nextjs-invert" style="height: 72px;">
+      </div>
+    </div>
+    
+    <!-- React -->
+    <div class="bento-item item-react">
+      <div class="tech-logo text-center">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" class="tech-icon" style="height: 55px;"><br>
+        <small>React</small>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- Subscribe Section -->
 <section class="subscribe-section position-relative pt-5 pb-5">
